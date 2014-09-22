@@ -1,14 +1,14 @@
 /*
-Theme Name: Heartless
+Theme Name: Blog Heartless Gaming
 Theme URI: http://underscores.me/
 Author: Underscores.me
 Author URI: http://underscores.me/
-Description: Description
-Version: 1.0-wpcom
+Description: Blog Heartless Gaming template
+Version: 0.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: heartless
-Tags:
+Tags: 
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -28,12 +28,14 @@ and Blueprint http://www.blueprintcss.org/
 2.0 Typography
 3.0 Elements
 4.0 Forms
+X.X Header
 5.0 Navigation
 	5.1 Links
 	5.2 Menus
 6.0 Accessibility
 7.0 Alignments
 8.0 Clearings
+
 9.0 Widgets
 10.0 Content
 	10.1 Posts and pages
@@ -405,6 +407,13 @@ textarea {
 	padding-left: 3px;
 	vertical-align: top; /* Improves readability and alignment in all browsers */
 	width: 100%;
+}
+/*--------------------------------------------------------------
+X.X Header
+--------------------------------------------------------------*/
+.site-branding {
+	/*margin: 0 auto;*/
+	text-align: center;
 }
 
 /*--------------------------------------------------------------
