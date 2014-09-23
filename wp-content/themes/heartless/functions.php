@@ -93,6 +93,8 @@ add_action( 'widgets_init', 'heartless_widgets_init' );
  */
 function heartless_scripts() {
 	wp_enqueue_style( 'heartless-style', get_stylesheet_uri() );
+	
+	wp_enqueue_style( 'heartless-style-content-sidebar', get_template_directory_uri() . '/layouts/content-sidebar.css' );
 
 	wp_enqueue_script( 'heartless-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 

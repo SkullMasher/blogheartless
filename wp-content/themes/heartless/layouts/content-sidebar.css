@@ -10,13 +10,16 @@ Layout: Content-Sidebar
 }
 .site-main {
 	margin: 0 25% 0 0;
+	background-color: chartreuse;
 }
 .site-content .widget-area {
 	float: right;
 	overflow: hidden;
 	width: 25%;
+	background-color: firebrick;
 }
 .site-footer {
 	clear: both;
 	width: 100%;
+	background-color: dodgerblue;
 }
