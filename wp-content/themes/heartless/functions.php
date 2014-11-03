@@ -76,15 +76,15 @@ add_action( 'after_setup_theme', 'heartless_setup' );
  * @link http://codex.wordpress.org/Function_Reference/register_sidebar
  */
 function heartless_widgets_init() {
-	register_sidebar( array(
-		'name'          => __( 'Sidebar', 'heartless' ),
-		'id'            => 'sidebar-1',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
-	) );
+	// register_sidebar( array(
+	// 	'name'          => __( 'Sidebar', 'heartless' ),
+	// 	'id'            => 'sidebar-1',
+	// 	'description'   => '',
+	// 	'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+	// 	'after_widget'  => '</aside>',
+	// 	'before_title'  => '<h1 class="widget-title">',
+	// 	'after_title'   => '</h1>',
+	// ) );
 }
 add_action( 'widgets_init', 'heartless_widgets_init' );
 
@@ -95,7 +95,11 @@ function heartless_scripts() {
 	wp_enqueue_style( 'heartless-style', get_stylesheet_uri() );
 	
 	wp_enqueue_style( 'heartless-style-content-sidebar', get_template_directory_uri() . '/layouts/content-sidebar.css' );
+	
+	// Include fonts
+	wp_enqueue_style( 'heartless-style-content-sidebar', get_template_directory_uri() . '/fonts/font-awesome.min.css' );
 
+	// Javascripts
 	wp_enqueue_script( 'heartless-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
 	wp_enqueue_script( 'heartless-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
