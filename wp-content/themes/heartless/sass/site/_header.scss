@@ -1,0 +1,41 @@
+.site-header {
+  // padding-bottom: 1rem;
+}
+
+.header-image img {
+  display: block;
+  margin: 0 auto;
+}
+
+.header-background-image {
+  background: no-repeat center;
+  background-size: cover;
+}
+
+.site-branding {
+  background-color: #333;
+  height: 400px;
+  padding: 3em 5em;
+}
+
+.site-title {
+  // border-left: #fff solid 2px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 2em;
+  text-transform: uppercase;
+
+  a {
+    color: #f00;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+.site-description {
+  // border-left: #000 solid 2px;
+  color: #fff;
+}
+

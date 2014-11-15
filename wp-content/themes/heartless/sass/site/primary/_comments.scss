@@ -1,6 +1,28 @@
 .comment-content a {
-	word-wrap: break-word;
+  word-wrap: break-word;
 }
+
 .bypostauthor {
-	display: block;
+  display: block;
+}
+
+.comments-area {
+  @include border-radius(5px);
+  background-color: #fff;
+  padding: 1em 5em;
+
+  h2 {
+    font-size: 3rem;
+  }
+}
+
+.comment-form .form-allowed-tags {
+  @include border-radius(5px);
+  background-color: $color-lightgrey;
+  margin: 0 auto;
+  padding: .5em;
+
+  textarea {
+    resize: vertical;
+  }
 }

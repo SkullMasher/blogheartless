@@ -35,6 +35,7 @@ and Blueprint http://www.blueprintcss.org/
 7.0 Alignments
 8.0 Clearings
 9.0 Widgets
+X.X Header
 10.0 Content
 	10.1 Posts and pages
 	10.2 Asides
@@ -86,6 +87,11 @@ and Blueprint http://www.blueprintcss.org/
 8.0 Clearings
 --------------------------------------------------------------*/
 @import 'modules/clearings';
+
+/*--------------------------------------------------------------
+X.X Header
+--------------------------------------------------------------*/
+@import 'site/header';
 
 /*--------------------------------------------------------------
 9.0 Widgets

@@ -34,6 +34,7 @@ and Blueprint http://www.blueprintcss.org/
 7.0 Alignments
 8.0 Clearings
 9.0 Widgets
+X.X Header
 10.0 Content
 	10.1 Posts and pages
 	10.2 Asides
@@ -550,8 +551,9 @@ a:hover, a:focus, a:active {
   padding: 1em .5em;
   color: #fff;
 }
-/* line 71, sass/navigation/_menus.scss */
-.main-navigation .current_page_item {
+/* line 66, sass/navigation/_menus.scss */
+.main-navigation .current_page_item a,
+.main-navigation .current-menu-item a {
   background-color: #ba3232;
   border-top: #fff 3px solid;
 }
@@ -690,6 +692,49 @@ a:hover, a:focus, a:active {
 }
 
 /*--------------------------------------------------------------
+X.X Header
+--------------------------------------------------------------*/
+/* line 5, sass/site/_header.scss */
+.header-image img {
+  display: block;
+  margin: 0 auto;
+}
+
+/* line 10, sass/site/_header.scss */
+.header-background-image {
+  background: no-repeat center;
+  background-size: cover;
+}
+
+/* line 15, sass/site/_header.scss */
+.site-branding {
+  background-color: #333;
+  height: 400px;
+  padding: 3em 5em;
+}
+
+/* line 21, sass/site/_header.scss */
+.site-title {
+  font-family: "Open Sans", sans-serif;
+  font-size: 2em;
+  text-transform: uppercase;
+}
+/* line 27, sass/site/_header.scss */
+.site-title a {
+  color: #f00;
+  text-decoration: none;
+}
+/* line 32, sass/site/_header.scss */
+.site-title a:hover {
+  text-decoration: underline;
+}
+
+/* line 37, sass/site/_header.scss */
+.site-description {
+  color: #fff;
+}
+
+/*--------------------------------------------------------------
 9.0 Widgets
 --------------------------------------------------------------*/
 /* line 1, sass/site/secondary/_widgets.scss */
@@ -714,36 +759,114 @@ a:hover, a:focus, a:active {
 /*--------------------------------------------------------------
 10.1 Posts and pages
 --------------------------------------------------------------*/
-/* line 1, sass/site/primary/_posts-and-pages.scss */
+/* line 2, sass/site/primary/_posts-and-pages.scss */
+.hentry {
+  background-clip: padding-box;
+  /* stops bg color from leaking outside the border: */
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #fff;
+  margin: 0 0 1.5em;
+  padding: 1.5rem;
+}
+
+/* line 10, sass/site/primary/_posts-and-pages.scss */
+.entry-title {
+  background-color: #527d9b;
+  color: #fff;
+  display: inline-block;
+  font-size: 3.2rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  padding: .3em .4em;
+  text-transform: uppercase;
+}
+
+/* line 22, sass/site/primary/_posts-and-pages.scss */
 .sticky {
+  color: #fff;
+  background-color: #527d9b;
   display: block;
 }
-
-/* line 5, sass/site/primary/_posts-and-pages.scss */
-.hentry {
-  margin: 0 0 1.5em;
+/* line 27, sass/site/primary/_posts-and-pages.scss */
+.sticky .entry-title {
+  background-color: #3e3e3e;
 }
 
-/* line 9, sass/site/primary/_posts-and-pages.scss */
+/* line 34, sass/site/primary/_posts-and-pages.scss */
+.entry-content h1,
+.entry-content h2,
+.entry-content h3,
+.entry-content h4,
+.entry-content h5,
+.entry-content h6 {
+  margin-bottom: .4em;
+}
+
+/* line 43, sass/site/primary/_posts-and-pages.scss */
+.entry-content h1 {
+  font-size: 3.2rem;
+}
+
+/* line 47, sass/site/primary/_posts-and-pages.scss */
+.entry-content h2 {
+  font-size: 3rem;
+}
+
+/* line 51, sass/site/primary/_posts-and-pages.scss */
+.entry-content h3 {
+  font-size: 2.8rem;
+}
+
+/* line 55, sass/site/primary/_posts-and-pages.scss */
+.entry-content h4 {
+  font-size: 2.6rem;
+}
+
+/* line 59, sass/site/primary/_posts-and-pages.scss */
+.entry-content h5 {
+  font-size: 2.4rem;
+}
+
+/* line 63, sass/site/primary/_posts-and-pages.scss */
+.entry-content h6 {
+  font-size: 2.2rem;
+}
+
+/* line 67, sass/site/primary/_posts-and-pages.scss */
+.entry-content p,
+.entry-content ul,
+.entry-content ol {
+  font-size: 2rem;
+  line-height: 1.6em;
+}
+
+/* line 74, sass/site/primary/_posts-and-pages.scss */
+.entry-content blockquote p {
+  font-size: 2.8rem;
+  line-height: 1.5em;
+}
+
+/* line 80, sass/site/primary/_posts-and-pages.scss */
 .byline,
 .updated:not(.published) {
   display: none;
 }
 
-/* line 14, sass/site/primary/_posts-and-pages.scss */
+/* line 85, sass/site/primary/_posts-and-pages.scss */
 .single .byline,
 .group-blog .byline {
   display: inline;
 }
 
-/* line 19, sass/site/primary/_posts-and-pages.scss */
+/* line 90, sass/site/primary/_posts-and-pages.scss */
 .page-content,
 .entry-content,
 .entry-summary {
   margin: 1.5em 0 0;
 }
 
-/* line 25, sass/site/primary/_posts-and-pages.scss */
+/* line 96, sass/site/primary/_posts-and-pages.scss */
 .page-links {
   clear: both;
   margin: 0 0 1.5em;
@@ -766,9 +889,38 @@ a:hover, a:focus, a:active {
   word-wrap: break-word;
 }
 
-/* line 4, sass/site/primary/_comments.scss */
+/* line 5, sass/site/primary/_comments.scss */
 .bypostauthor {
   display: block;
+}
+
+/* line 9, sass/site/primary/_comments.scss */
+.comments-area {
+  background-clip: padding-box;
+  /* stops bg color from leaking outside the border: */
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 1em 5em;
+}
+/* line 14, sass/site/primary/_comments.scss */
+.comments-area h2 {
+  font-size: 3rem;
+}
+
+/* line 19, sass/site/primary/_comments.scss */
+.comment-form .form-allowed-tags {
+  background-clip: padding-box;
+  /* stops bg color from leaking outside the border: */
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #c2c2c2;
+  margin: 0 auto;
+  padding: .5em;
+}
+/* line 25, sass/site/primary/_comments.scss */
+.comment-form .form-allowed-tags textarea {
+  resize: vertical;
 }
 
 /*--------------------------------------------------------------

@@ -63,15 +63,15 @@
     color: #fff;
   }
 
-  // .current_page_item a,
-  // .current-menu-item a {
-  //   background-color: $color-red;
-  //   border-top: #fff 3px solid;
-  // }
-  .current_page_item {
+  .current_page_item a,
+  .current-menu-item a {
     background-color: $color-red;
     border-top: #fff 3px solid;
   }
+  // .current_page_item {
+  //   background-color: $color-red;
+  //   border-top: #fff 3px solid;
+  // }
 }
 
 /* Small menu */

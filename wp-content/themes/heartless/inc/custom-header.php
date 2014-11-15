@@ -26,9 +26,9 @@ function heartless_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'heartless_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
-		'width'                  => 1000,
-		'height'                 => 250,
-		'flex-height'            => true,
+		'width'                  => 1280,
+		'height'                 => 350,
+		'flex-height'            => false,
 		'wp-head-callback'       => 'heartless_header_style',
 		'admin-head-callback'    => 'heartless_admin_header_style',
 		'admin-preview-callback' => 'heartless_admin_header_image',
