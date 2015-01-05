@@ -27,7 +27,15 @@
 			<button class="menu-toggle"><?php _e( 'Primary Menu', 'heartless' ); ?></button>
 			<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
 		</nav><!-- #site-navigation -->
-		<div class="site-branding">
+
+		<?php if ( get_header_image() && ('blank' == get_header_textcolor()) ) : ?>
+			<div class="header-image">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+					<img src="<?php header_image(); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" alt="">
+				</a>
+			</div>
+		<?php endif; // End header image check. ?>
+		<div class="site-branding header-background-image" style="background-image: url(<?php header_image() ?>)">
 			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 		</div>

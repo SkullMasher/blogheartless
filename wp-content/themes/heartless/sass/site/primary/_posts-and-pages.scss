@@ -1,28 +1,115 @@
-.sticky {
-	display: block;
+// Style for blog post container
+.hentry {
+  @include border-radius(5px);
+  background-color: #fff;
+  margin: 0 0 1.5em;
+  padding: 1.5rem;
 }
 
-.hentry {
-	margin: 0 0 1.5em;
+// Style for blog post title
+
+.entry-header,
+.entry-content {
+  float: left;
 }
+
+.entry-title {
+  background-color: $color-smoothblue;
+  display: inline-block;
+  padding: 0;
+  text-transform: uppercase;
+
+  a {
+    @include font-size(3.2);
+    color: #fff;
+    display: block;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    padding: 0 .5em;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Style for the sticky post
+.sticky {
+  background-color: $color-smoothblue;
+  color: #fff;
+  display: block;
+
+  .entry-title {
+    background-color: $color-darkgrey;
+  }
+
+}
+
+// Heading & other html element styling in blog post
+.entry-content h1,
+.entry-content h2,
+.entry-content h3,
+.entry-content h4,
+.entry-content h5,
+.entry-content h6 {
+  margin-bottom: .4em;
+}
+
+.entry-content h1 {
+  font-size: 3.2rem;
+}
+
+.entry-content h2 {
+  font-size: 3rem;
+}
+
+.entry-content h3 {
+  font-size: 2.8rem;
+}
+
+.entry-content h4 {
+  font-size: 2.6rem;
+}
+
+.entry-content h5 {
+  font-size: 2.4rem;
+}
+
+.entry-content h6 {
+  font-size: 2.2rem;
+}
+
+.entry-content p,
+.entry-content ul,
+.entry-content ol {
+  font-size: 2rem;
+  line-height: 1.6em;
+}
+
+.entry-content blockquote p {
+  font-size: 2.8rem;
+  line-height: 1.5em;
+}
+
 
 .byline,
-.updated:not(.published){
-	display: none;
+.updated:not(.published) {
+  display: none;
 }
 
 .single .byline,
 .group-blog .byline {
-	display: inline;
+  display: inline;
 }
 
 .page-content,
 .entry-content,
 .entry-summary {
-	margin: 1.5em 0 0;
+  margin: 1.5em 0 0;
 }
 
 .page-links {
-	clear: both;
-	margin: 0 0 1.5em;
+  clear: both;
+  margin: 0 0 1.5em;
 }
