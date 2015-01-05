@@ -7,6 +7,7 @@
 }
 
 // Style for blog post title
+<<<<<<< HEAD
 
 .entry-header,
 .entry-content {
@@ -32,12 +33,28 @@
       text-decoration: underline;
     }
   }
+=======
+.entry-title {
+  background-color: $color-smoothblue;
+  color: #fff;
+  display: inline-block;
+  font-size: 3.2rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  padding: .3em .4em;
+  text-transform: uppercase;
+>>>>>>> 23a9dd2c022b722d1daa83f2570e02d96110d144
 }
 
 // Style for the sticky post
 .sticky {
+<<<<<<< HEAD
   background-color: $color-smoothblue;
   color: #fff;
+=======
+  color: #fff;
+  background-color: $color-smoothblue;
+>>>>>>> 23a9dd2c022b722d1daa83f2570e02d96110d144
   display: block;
 
   .entry-title {
@@ -58,6 +75,7 @@
 
 .entry-content h1 {
   font-size: 3.2rem;
+<<<<<<< HEAD
 }
 
 .entry-content h2 {
@@ -80,6 +98,30 @@
   font-size: 2.2rem;
 }
 
+=======
+}
+
+.entry-content h2 {
+  font-size: 3rem;
+}
+
+.entry-content h3 {
+  font-size: 2.8rem;
+}
+
+.entry-content h4 {
+  font-size: 2.6rem;
+}
+
+.entry-content h5 {
+  font-size: 2.4rem;
+}
+
+.entry-content h6 {
+  font-size: 2.2rem;
+}
+
+>>>>>>> 23a9dd2c022b722d1daa83f2570e02d96110d144
 .entry-content p,
 .entry-content ul,
 .entry-content ol {
