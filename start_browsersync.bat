@@ -1,0 +1,1 @@
+browser-sync start --proxy "localhost/evalphp" --files "css/*.css, *.php, classes/*.php, js/*.js"

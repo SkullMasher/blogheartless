@@ -7,12 +7,97 @@
 }
 
 // Style for blog post title
-<<<<<<< HEAD
-
 .entry-header,
 .entry-content {
   float: left;
 }
+
+.entry-header {
+  width: 25%;
+  margin-right: 3%;
+  
+  .entry-meta {
+    border-right: solid 5px #ba3232;
+      
+    hr {
+      background-color: #ba3232;
+      height: 5px;
+      margin-bottom: 1em;
+    }
+
+    .author-meta {
+      margin: 0 auto;
+      width: 125px;
+
+      .avatar {
+        border-color: #ba3232;
+        border-radius: 50%;
+        border-style: solid;
+        border-width: 5px;
+        width: 125px;
+        margin: 0 auto;
+      }
+
+      .author-url {
+        @include font-size(1.8);
+        color: #ba3232;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        text-transform: capitalize;
+        width: 125px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+      }
+    }
+
+    .post-date{
+      a {
+        color: #fff;
+        display: block;
+        margin-bottom: 1em;
+        text-decoration: none;
+        text-align: center;
+        
+        &:hover {
+          text-decoration: underline;
+        }
+
+        time {
+          background-color: #ba3232;
+          padding: 5px 12px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .entry-header {
+
+    .author-meta {
+      width: 100%;
+
+      .author-url {
+        @include font-size(1.4);
+      }
+    }
+  }
+}
+
+.entry-content {
+  width: 72%;
+}
+
+.single-post .entry-header,
+.single-post .entry-content {
+  float: none;
+}
+
+
 
 .entry-title {
   background-color: $color-smoothblue;
@@ -21,7 +106,7 @@
   text-transform: uppercase;
 
   a {
-    @include font-size(3.2);
+    @include font-size(2.4);
     color: #fff;
     display: block;
     font-family: "Open Sans", sans-serif;
@@ -33,28 +118,12 @@
       text-decoration: underline;
     }
   }
-=======
-.entry-title {
-  background-color: $color-smoothblue;
-  color: #fff;
-  display: inline-block;
-  font-size: 3.2rem;
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
-  padding: .3em .4em;
-  text-transform: uppercase;
->>>>>>> 23a9dd2c022b722d1daa83f2570e02d96110d144
 }
 
 // Style for the sticky post
 .sticky {
-<<<<<<< HEAD
   background-color: $color-smoothblue;
   color: #fff;
-=======
-  color: #fff;
-  background-color: $color-smoothblue;
->>>>>>> 23a9dd2c022b722d1daa83f2570e02d96110d144
   display: block;
 
   .entry-title {
@@ -75,7 +144,6 @@
 
 .entry-content h1 {
   font-size: 3.2rem;
-<<<<<<< HEAD
 }
 
 .entry-content h2 {
@@ -98,30 +166,6 @@
   font-size: 2.2rem;
 }
 
-=======
-}
-
-.entry-content h2 {
-  font-size: 3rem;
-}
-
-.entry-content h3 {
-  font-size: 2.8rem;
-}
-
-.entry-content h4 {
-  font-size: 2.6rem;
-}
-
-.entry-content h5 {
-  font-size: 2.4rem;
-}
-
-.entry-content h6 {
-  font-size: 2.2rem;
-}
-
->>>>>>> 23a9dd2c022b722d1daa83f2570e02d96110d144
 .entry-content p,
 .entry-content ul,
 .entry-content ol {

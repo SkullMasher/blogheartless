@@ -1,12 +1,11 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>			
 	<?php 
 		if (is_single()) :
-			the_title('<h1 id="post-title">', '</h1>');
-			the_post_thumbnail('featured');			
+			the_title('<h1 id="post-title">', '</h1>');					
 		else :
-			the_title('<h3 class="post-title"><a href="' . esc_url( get_permalink()) . '" rel="bookmark">', '</a></h3>');
-			the_post_thumbnail('featured-cropped');	
-		endif; 
+			the_title('<h3 class="post-title"><a href="' . esc_url( get_permalink()) . '" rel="bookmark">', '</a></h3>');			
+		endif;
+		the_post_thumbnail('featured');	 
 	?>		
 	<p class="post-meta">
 		<?php if (is_sticky()) : ?> 
@@ -18,7 +17,7 @@
 		if ($post->post_excerpt) :
 			the_excerpt(); 	        	
 		else : 
-		the_content(); 
+			the_content(); 
 		endif;
 		if (is_single()) :
 			$post_tags = get_the_tags();

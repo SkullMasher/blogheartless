@@ -1,68 +1,5 @@
 <?php
 
-// register and enqueue all of the scripts used by Aside
-function ct_ignite_load_javascript_files() {
-
-    wp_register_style( 'ct-ignite-google-fonts', '//fonts.googleapis.com/css?family=Lusitana:400,700');
-
-    // enqueues scripts & styles
-    if(! is_admin() ) {
-        wp_enqueue_script('ct-ignite-production', get_template_directory_uri() . '/js/build/production.min.js#ct_ignite_asyncload', array('jquery'),'', true);
-
-        wp_enqueue_style('ct-ignite-google-fonts');
-        wp_enqueue_style('font-awesome', get_template_directory_uri() . '/assets/font-awesome/css/font-awesome.min.css');
-        wp_enqueue_style('style', get_template_directory_uri() . 'style.min.css');
-    }
-    // enqueues the comment-reply script on posts & pages.  This script is included in WP by default
-    if( is_singular() && comments_open() && get_option('thread_comments') ) wp_enqueue_script( 'comment-reply' ); 
-}
-add_action('wp_enqueue_scripts', 'ct_ignite_load_javascript_files' );
-
-/* enqueue styles used on theme options page */
-function ct_ignite_enqueue_admin_styles($hook){
-
-    if ( 'appearance_page_ignite-options' == $hook ) {
-        wp_enqueue_style('style-admin', get_template_directory_uri() . '/style-admin.css');
-    }
-}
-add_action('admin_enqueue_scripts',	'ct_ignite_enqueue_admin_styles' );
-
-function ct_ignite_enqueue_profile_image_uploader($hook) {
-
-    // if is user profile page
-    if('profile.php' == $hook || 'user-edit.php' == $hook){
-
-        // Enqueues all scripts, styles, settings, and templates necessary to use all media JavaScript APIs.
-        wp_enqueue_media();
-
-        // enqueue the JS needed to utilize media uploader on profile image upload
-        wp_enqueue_script('ct-profile-uploader', get_template_directory_uri() . '/js/build/profile-uploader.min.js');
-    }
-}
-add_action('admin_enqueue_scripts', 'ct_ignite_enqueue_profile_image_uploader');
-
-/* enqueues scripts and styles used on customizer page */
-function ct_ignite_enqueue_customizer_scripts(){
-
-    wp_enqueue_script('multiple-select', get_template_directory_uri() . '/js/build/multiple-select.min.js',array('jquery'),'',true);
-    wp_enqueue_style('multiple-select-styles', get_template_directory_uri() . '/styles/multiple-select.css');
-
-    wp_enqueue_script('customizer', get_template_directory_uri() . '/js/build/customizer.min.js',array('jquery'),'',true);
-}
-add_action('customize_controls_enqueue_scripts','ct_ignite_enqueue_customizer_scripts');
-
-// load all scripts enqueued by theme asynchronously
-function ct_ignite_add_async_script($url) {
-
-    // if async parameter not present, do nothing
-    if (strpos($url, '#ct_ignite_asyncload') === false){
-        return $url;
-    }
-    // if async parameter present, add async attribute
-    return str_replace('#ct_ignite_asyncload', '', $url)."' async='async";
-}
-add_filter('clean_url', 'ct_ignite_add_async_script', 11, 1);
-
 /* Load the core theme framework. */
 require_once( trailingslashit( get_template_directory() ) . 'library/hybrid.php' );
 new Hybrid();
@@ -83,7 +20,6 @@ function ct_ignite_theme_setup() {
 	$prefix = hybrid_get_prefix();
     
 	/* Theme-supported features go here. */
-    add_theme_support( 'hybrid-core-widgets' );
     add_theme_support( 'hybrid-core-template-hierarchy' );
     add_theme_support( 'loop-pagination' );
     add_theme_support( 'cleaner-gallery' );
@@ -92,18 +28,34 @@ function ct_ignite_theme_setup() {
     // from WordPress core not theme hybrid
     add_theme_support( 'automatic-feed-links' );
     add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'title-tag' );
 
     // add inc folder files
     foreach (glob(trailingslashit( get_template_directory() ) . 'inc/*.php') as $filename)
     {
         include $filename;
     }
+
+	// add widget folder files
+	foreach (glob(trailingslashit( get_template_directory() ) . 'inc/widgets/*.php') as $filename)
+	{
+		include $filename;
+	}
+
     // adds theme options page
     require_once( trailingslashit( get_template_directory() ) . 'theme-options.php' );
 
     // load text domain
     load_theme_textdomain('ignite', get_template_directory() . '/languages');
 }
+
+function ct_ignite_remove_cleaner_gallery() {
+
+	if( class_exists( 'Jetpack' ) && ( Jetpack::is_module_active( 'carousel' ) || Jetpack::is_module_active( 'tiled-gallery' ) ) ) {
+		remove_theme_support( 'cleaner-gallery' );
+	}
+}
+add_action( 'after_setup_theme', 'ct_ignite_remove_cleaner_gallery', 11 );
 
 /* register primary sidebar */
 function ct_ignite_register_sidebar(){
@@ -120,125 +72,6 @@ function ct_ignite_register_menu() {
     register_nav_menu('primary', __('Primary', 'ignite'));
 }
 add_action('init', 'ct_ignite_register_menu');
-
-// takes user input from the customizer and outputs linked social media icons
-function ct_ignite_social_media_icons() {
-    
-    $social_sites = ct_ignite_customizer_social_media_array();
-    	
-    // any inputs that aren't empty are stored in $active_sites array
-    foreach($social_sites as $social_site) {
-        if( strlen( get_theme_mod( $social_site ) ) > 0 ) {
-            $active_sites[] = $social_site;
-        }
-    }
-    
-    // for each active social site, add it as a list item 
-    if(!empty($active_sites)) {
-        echo "<ul class='social-media-icons'>";
-		foreach ($active_sites as $active_site) {?>
-			<li>
-                <?php if( $active_site == 'email' ) : ?>
-                    <a target="_blank" href="mailto:<?php echo is_email( get_theme_mod( $active_site ) ); ?>">
-                <?php else : ?>
-				        <a target="_blank" href="<?php echo esc_url(get_theme_mod( $active_site )); ?>">
-                <?php endif; ?>
-
-                <?php if( $active_site ==  "flickr" || $active_site ==  "dribbble" || $active_site ==  "instagram" || $active_site ==  "soundcloud" || $active_site ==  "spotify" || $active_site ==  "vine" || $active_site ==  "yahoo" || $active_site ==  "codepen" || $active_site ==  "delicious" || $active_site ==  "stumbleupon" || $active_site ==  "deviantart" || $active_site ==  "digg" || $active_site ==  "hacker-news" || $active_site == "vk") { ?>
-                    <i class="fa fa-<?php echo $active_site; ?>"></i>
-                <?php } elseif( $active_site == 'email' ) { ?>
-                    <i class="fa fa-envelope"></i>
-                <?php } elseif( $active_site == 'academia' ) { ?>
-                    <i class="fa fa-graduation-cap"></i>
-                <?php } else { ?>
-                    <i class="fa fa-<?php echo $active_site; ?>-square"></i>
-                <?php } ?>
-				</a>
-			</li><?php
-		}
-		echo "</ul>";
-	}
-}
-
-// Creates the next/previous post section below every post
-function ct_ignite_further_reading() {
-
-    global $post;
-
-    // gets the next & previous posts if they exist
-    $previous_blog_post = get_adjacent_post(false,'',true);
-    $next_blog_post = get_adjacent_post(false,'',false);
-
-    if(get_the_title($previous_blog_post)) {
-        $previous_title = get_the_title($previous_blog_post);
-    } else {
-        $previous_title = __("The Previous Post", 'ignite');
-    }
-    if(get_the_title($next_blog_post)) {
-        $next_title = get_the_title($next_blog_post);
-    } else {
-        $next_title = __("The Next Post", 'ignite');
-    }
-
-    echo "<nav class='further-reading'>";
-    if($previous_blog_post) {
-        echo "<p class='prev'>
-        		<span>" . __('Previous Post', 'ignite') . "</span>
-        		<a href='".get_permalink($previous_blog_post)."'>".$previous_title."</a>
-	        </p>";
-    } else {
-        echo "<p class='prev'>
-                <span>" . __('Return to Blog', 'ignite') . "</span>
-        		<a href='".esc_url(home_url())."'>" . __('This is the oldest post', 'ignite') . "</a>
-        	</p>";
-    }
-    if($next_blog_post) {
-
-        echo "<p class='next'>
-        		<span>" . __('Next Post', 'ignite') . "</span>
-        		<a href='".get_permalink($next_blog_post)."'>".$next_title."</a>
-	        </p>";
-    } else {
-        echo "<p class='next'>
-                <span>" . __('Return to Blog', 'ignite') . "</span>
-        		<a href='".esc_url(home_url())."'>" . __('This is the newest post', 'ignite') . "</a>
-        	 </p>";
-    }
-    echo "</nav>";
-}
-
-// Outputs the categories the post was included in with their names hyperlinked to their permalink
-// separator removed so links site tightly against each other
-function ct_ignite_category_display() {
-       
-    $categories = get_the_category();
-    $separator = ' ';
-    $output = '';
-    if($categories){
-	    echo "<p><i class='fa fa-folder-open'></i>";
-        foreach($categories as $category) {
-            $output .= '<a href="'.get_category_link( $category->term_id ).'" title="' . esc_attr( sprintf( __( "View all posts in %s", 'ignite' ), $category->name ) ) . '">'.$category->cat_name.'</a>'.$separator;
-        }
-        echo trim($output, $separator);
-	    echo "</p>";
-    }   
-}
-
-// Outputs the tags the post used with their names hyperlinked to their permalink
-function ct_ignite_tags_display() {
-       
-    $tags = get_the_tags();
-    $separator = ' ';
-    $output = '';
-    if($tags){
-        echo "<p><i class='fa fa-tag'></i>";
-        foreach($tags as $tag) {
-            $output .= '<a href="'.get_tag_link( $tag->term_id ).'" title="' . esc_attr( sprintf( __( "View all posts tagged %s", 'ignite' ), $tag->name ) ) . '">'.$tag->name.'</a>'.$separator;
-        }
-        echo trim($output, $separator);
-	    echo "</p>";
-    }
-}
 
 /* added to customize the comments. Same as default except -> added use of gravatar images for comment authors */
 function ct_ignite_customize_comments( $comment, $args, $depth ) {
@@ -281,28 +114,40 @@ function ct_ignite_customize_comments( $comment, $args, $depth ) {
 /* added HTML5 placeholders for each default field */
 function ct_ignite_update_fields($fields) {
 
+	// get commenter object
     $commenter = wp_get_current_commenter();
+
+	// are name and email required?
     $req = get_option( 'require_name_email' );
+
+	// required or optional label to be added
+	if( $req == 1 ) {
+		$label = '*';
+	} else {
+		$label = ' (optional)';
+	}
+
+	// adds aria required tag if required
     $aria_req = ( $req ? " aria-required='true'" : '' );
 
     $fields['author'] =
         '<p class="comment-form-author">
             <label class="screen-reader-text">' . __('Your Name', 'ignite') . '</label>
-			<input required placeholder="' . __('Your Name*', 'ignite') . '" id="author" name="author" type="text" aria-required="true" value="' . esc_attr( $commenter['comment_author'] ) .
+			<input placeholder="' . __('Your Name', 'ignite') . $label . '" id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
         '" size="30"' . $aria_req . ' />
     	</p>';
 
     $fields['email'] =
         '<p class="comment-form-email">
             <label class="screen-reader-text">' . __('Your Email', 'ignite') . '</label>
-    		<input required placeholder="' . __('Your Email*', 'ignite') . '" id="email" name="email" type="email" aria-required="true" value="' . esc_attr(  $commenter['comment_author_email'] ) .
+    		<input placeholder="' . __('Your Email', 'ignite') . $label . '" id="email" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) .
         '" size="30"' . $aria_req . ' />
     	</p>';
 
     $fields['url'] =
         '<p class="comment-form-url">
             <label class="screen-reader-text">' . __('Your Website URL', 'ignite') . '</label>
-			<input placeholder="' . __('Your URL', 'ignite') . '" id="url" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) .
+			<input placeholder="' . __('Your URL', 'ignite') . ' (optional)" id="url" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) .
         '" size="30" />
             </p>';
 
@@ -426,7 +271,7 @@ function ct_ignite_featured_image() {
         } else {
             echo "
                 <div class='featured-image' style=\"background-image: url('".$image."')\">
-                    <a href='" . get_the_permalink() ."'>" . get_the_title() . "</a>
+                    <a href='" . get_permalink() ."'>" . get_the_title() . "</a>
                 </div>
                 ";
         }
@@ -476,6 +321,10 @@ function ct_ignite_body_class( $classes ) {
         $classes[] = 'sidebar-left';
     }
 
+	if( get_theme_mod('ct_ignite_parent_menu_icon_settings') == 'show' ) {
+		$classes[] = 'parent-icons';
+	}
+
     return $classes;
 }
 add_filter( 'body_class', 'ct_ignite_body_class' );
@@ -494,6 +343,15 @@ function ct_ignite_post_class_update($classes){
             }
         }
     }
+	// if 3.8 or lower
+	if( get_bloginfo('version') < 3.9 ) {
+
+		// add the has-post-thumbnail class
+		if( has_post_thumbnail() ) {
+			$classes[] = 'has-post-thumbnail';
+		}
+	}
+
     return $classes;
 }
 add_filter( 'post_class', 'ct_ignite_post_class_update' );
@@ -671,30 +529,6 @@ function ct_ignite_background_css(){
 }
 add_action('wp_enqueue_scripts','ct_ignite_background_css');
 
-/* comment count link in excerpts */
-function ct_ignite_post_meta_comments(){
-
-    // if comments aren't open and there aren't any comments
-    if(!comments_open() && get_comments_number() < 1) {
-        ?>
-        <p>
-            <i class="fa fa-comment"></i>
-            <?php comments_number( __( 'Comments closed', 'ignite' ), __( 'One Comment', 'ignite'), __( '% Comments', 'ignite' ) ); ?>
-        </p>
-    <?php
-    // otherwise link to the comments and display the count
-    } else {
-        ?>
-        <p>
-            <i class="fa fa-comment"></i>
-            <a href="<?php comments_link(); ?>">
-                <?php comments_number( __( 'Leave a Comment', 'ignite' ), __( 'One Comment', 'ignite'), __( '% Comments', 'ignite' ) ); ?>
-            </a>
-        </p>
-    <?php
-    }
-}
-
 // outputs the user's uploaded profile picture with Gravatar fallback
 function ct_ignite_profile_image_output(){
 
@@ -717,3 +551,21 @@ function ct_ignite_profile_image_output(){
         echo get_avatar( get_the_author_meta( 'ID' ), 72 );
     }
 }
+
+function ct_ignite_wp_backwards_compatibility() {
+
+	// not using this function, simply remove it so use of "has_image_size" doesn't break < 3.9
+	if( get_bloginfo('version') < 3.9 ) {
+		remove_filter( 'image_size_names_choose', 'hybrid_image_size_names_choose' );
+	}
+}
+add_action('init', 'ct_ignite_wp_backwards_compatibility');
+
+if ( ! function_exists( '_wp_render_title_tag' ) ) :
+    function ct_ignite_add_title_tag() {
+    ?>
+        <title><?php wp_title( ' | ' ); ?></title>
+    <?php
+    }
+    add_action( 'wp_head', 'ct_ignite_add_title_tag' );
+endif;

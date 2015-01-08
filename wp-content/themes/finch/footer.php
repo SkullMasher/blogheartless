@@ -1,6 +1,6 @@
 <footer>	
 	<div id="footer-top">
-		<?php wp_nav_menu(array('theme_location' => 'footer','depth' => 1,'container' => 'false','fallback_cb' => 'false')); ?>
+		<?php wp_nav_menu(array('theme_location' => 'footer','depth' => 1,'container' => false,'fallback_cb' => false)); ?>
 		<?php get_search_form(); ?>
 	</div>
 	<div id="footer-bottom">

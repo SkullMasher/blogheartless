@@ -5,7 +5,7 @@ Author: Michael Burrows
 Author URI: http://www.wpmultiverse.com/
 Theme URI: http://www.wpmultiverse.com/themes/finch/
 Tags: blue, gray, dark, two-columns, responsive-layout, custom-menu, editor-style, featured-images, sticky-post
-Version: 1.0.3
+Version: 1.0.4
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html 
 Finch WordPress Theme, Copyright 2014 wpmultiverse.com
@@ -51,7 +51,7 @@ footer {background-color:#455159; margin-bottom:60px; color:#999;}
 
 /* ----- widgets ----- */
 .widget {font-size:14px; line-height:1.6em; margin-bottom:30px; padding-bottom:30px; border-bottom:1px solid #eee;}
-.widget h3 {font-size:16px;}
+.widget h4 {font-size:16px; font-weight:bold;}
 .widget img {display:inline-block; height:auto; max-width:100%;}
 .widget select {max-width:100%}
 .widget ul {padding:0; margin-left:14px;}
@@ -61,10 +61,11 @@ footer {background-color:#455159; margin-bottom:60px; color:#999;}
 .widget_tag_cloud a:hover {background-color:#3485b4;}
 .widget_calendar table {width:100%;}
 .widget_calendar table td {text-align:center;}
-.widget_search input[type=text] {width:78%;}
+.widget_search label {width:71.5%;}
+.widget_search input[type=search] {width:100%; padding:9px;}
 
 /* ----- posts & pages ----- */
-article {line-height:1.8em; padding:0 30px 15px 0; margin:0 30px 30px 0; border-bottom:1px solid #eee;}
+article {line-height:1.7em; padding:0 30px 15px 0; margin:0 30px 30px 0; border-bottom:1px solid #eee;}
 article h1 {font-size:30px;}
 article h2 {font-size:26px;}
 article h3 {font-size:24px}
@@ -73,18 +74,18 @@ article h5 {font-size:18px;}
 article h6 {font-size:16px;}
 article p {margin-bottom:30px;}
 article img {display:inline-block; height:auto; max-width:100%;}
-article ul {padding:0; margin-left:16px;}
+article ul, article ol {padding:0; margin-left:16px; margin-bottom:30px;}
 article blockquote {border-left:4px solid #3485b4; padding-left:30px; color:#aaa; font-style:italic;}
 article table {width:100%; margin-bottom:30px;}
 article td, article th {border:1px solid #ccc; padding:4px 8px;}
 article dt {font-weight:bold;}
 article dd {margin:0;}
 article embed {max-width:100%;}
-#post-title, .post-title {font-weight:normal; font-size:36px; line-height:46px;}
+#post-title, .post-title {font-weight:bold; font-size:36px; line-height:46px;}
 .post-title a {color:#293136;}
 .post-title a:hover {color:#3485b4;}
-.post-meta {color:#aaa; text-transform:uppercase;}
-.post-meta .sticky {border-left:3px solid #3485b4; color:#293136; padding-left:8px;}
+.post-meta {color:#aaa; border-left:3px solid #3485b4; line-height:1em; font-weight:bold; padding-left:8px;}
+.post-meta .sticky {color:#293136;}
 .post-tags {color:#3485b4; font-size:12px;}
 .post-tags span {font-size:10px;}
 .post-tags a {margin-right:6px;}
@@ -117,7 +118,7 @@ article embed {max-width:100%;}
 .form-allowed-tags {display:none;}
 
 /* ----- form elements ----- */
-input[type=text], input[type=password], input[type=search], textarea {border:1px solid #ddd; margin-right:5px; padding:12px; width:85%; font-size:14px; color:#222; margin-bottom:10px; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px;}
+input[type=text], input[type=email], input[type=password], input[type=search], textarea {border:1px solid #ddd; margin-right:5px; padding:12px; width:85%; font-size:14px; color:#222; margin-bottom:10px; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px;}
 input[type=submit], input[type=reset] {background-color:#293136; border:0; color:#fff; padding:10px 14px; text-align:center; font-size:14px; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px;}
 input[type=password] {width:100%;}
 .screen-reader-text {display:none;}

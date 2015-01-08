@@ -1,5 +1,5 @@
 @import url('http://fonts.googleapis.com/css?family=Oxygen:400,700');
-body {color:#293136; font-family:'Oxygen',sans-serif; font-size:16px;}
+body {color:#293136; font-family:'Oxygen',sans-serif; font-size:16px; width:705px;}
 h1, h2, h3, h4, h5, h6 {margin-top:0;}
 a {color:#3485b4;}
 a:hover {color:#293136;}

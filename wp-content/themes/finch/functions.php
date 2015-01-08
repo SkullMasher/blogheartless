@@ -19,8 +19,7 @@ if (!function_exists('finch_setup')):
 		add_theme_support('post-thumbnails');
 		add_theme_support('html5', array('search-form'));
 		add_theme_support('automatic-feed-links');	
-		add_image_size('featured', 705);	
-		add_image_size('featured-cropped', 705, 220, true);			
+		add_image_size('featured', 705);				
 	}
 endif; 
 add_action('after_setup_theme', 'finch_setup');
@@ -39,6 +38,14 @@ function finch_javascript() {
 	if (is_singular() && comments_open()) {wp_enqueue_script('comment-reply');}
 }
 add_action('wp_enqueue_scripts', 'finch_javascript');
+
+// html5 shiv
+function finch_html5_shiv() {
+    echo '<!--[if lt IE 9]>';
+    echo '<script src="'. get_template_directory_uri() .'/assets/js/html5shiv.js"></script>';
+    echo '<![endif]-->';
+}
+add_action('wp_head', 'finch_html5_shiv');
 
 // sidebar
 function finch_widgets_init() {

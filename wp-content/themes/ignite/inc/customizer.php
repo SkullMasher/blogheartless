@@ -74,21 +74,24 @@ function ct_ignite_add_customizer_content( $wp_customize ) {
 
     /***** Add Panels *****/
 
-    // Logo panel
-    $wp_customize->add_panel( 'ct_ignite_logo_panel', array(
-        'priority'       => 30,
-        'capability'     => 'edit_theme_options',
-        'title'          => __('Logo', 'ignite'),
-        'description'    => __('Upload, position, and resize your logo', 'ignite' )
-    ) );
+	if( method_exists( 'WP_Customize_Manager', 'add_panel' ) ) {
 
-    // Font panel
-    $wp_customize->add_panel( 'ct_ignite_font_panel', array(
-        'priority'       => 50,
-        'capability'     => 'edit_theme_options',
-        'title'          => __('Font', 'ignite'),
-        'description'    => __('Choose a font family and font weight.', 'ignite')
-    ) );
+		// Logo panel
+		$wp_customize->add_panel( 'ct_ignite_logo_panel', array(
+			'priority'    => 30,
+			'capability'  => 'edit_theme_options',
+			'title'       => __( 'Logo', 'ignite' ),
+			'description' => __( 'Upload, position, and resize your logo', 'ignite' )
+		) );
+
+		// Font panel
+		$wp_customize->add_panel( 'ct_ignite_font_panel', array(
+			'priority'    => 50,
+			'capability'  => 'edit_theme_options',
+			'title'       => __( 'Font', 'ignite' ),
+			'description' => __( 'Choose a font family and font weight.', 'ignite' )
+		) );
+	}
 
 	/***** Logo Upload *****/
 
@@ -105,6 +108,7 @@ function ct_ignite_add_customizer_content( $wp_customize ) {
         'type'              => 'theme_mod',
         'capability'        => 'edit_theme_options',
         'sanitize_callback' => 'esc_url_raw',
+		'transport'         => 'postMessage'
     ) );
     // control
 	$wp_customize->add_control(
@@ -129,12 +133,14 @@ function ct_ignite_add_customizer_content( $wp_customize ) {
     // setting - logo positioning top/bottom
     $wp_customize->add_setting( 'logo_positioning_updown_setting', array(
         'default' => 0,
-        'sanitize_callback' => 'ct_ignite_sanitize_integer'
+        'sanitize_callback' => 'ct_ignite_sanitize_integer',
+	    'transport'         => 'postMessage'
     ) );
     // setting - logo positioning left/right
     $wp_customize->add_setting( 'logo_positioning_leftright_setting', array(
         'default' => 0,
-        'sanitize_callback' => 'ct_ignite_sanitize_integer'
+        'sanitize_callback' => 'ct_ignite_sanitize_integer',
+        'transport'         => 'postMessage'
     ) );
     // control - logo positioning top/bottom
     $wp_customize->add_control( new ct_ignite_number_input_control(
@@ -167,12 +173,14 @@ function ct_ignite_add_customizer_content( $wp_customize ) {
     // setting - logo increase/decrease width
     $wp_customize->add_setting( 'logo_size_width_setting', array(
         'default' => 0,
-        'sanitize_callback' => 'ct_ignite_sanitize_integer'
+        'sanitize_callback' => 'ct_ignite_sanitize_integer',
+	    'transport'         => 'postMessage'
     ) );
     // setting - logo increase/decrease height
     $wp_customize->add_setting( 'logo_size_height_setting', array(
         'default' => 0,
-        'sanitize_callback' => 'ct_ignite_sanitize_integer'
+        'sanitize_callback' => 'ct_ignite_sanitize_integer',
+        'transport'         => 'postMessage'
     ) );
     // control - logo increase/decrease width
     $wp_customize->add_control( new ct_ignite_number_input_control(
@@ -362,6 +370,42 @@ function ct_ignite_add_customizer_content( $wp_customize ) {
         'priority'   => 70,
         'capability' => 'edit_theme_options'
     ) );
+	// setting - date
+	$wp_customize->add_setting( 'ct_ignite_post_meta_date_settings', array(
+		'default'           => 'show',
+		'type'              => 'theme_mod',
+		'capability'        => 'edit_theme_options',
+		'sanitize_callback' => 'ct_ignite_sanitize_show_hide_setting',
+	) );
+	// control - date
+	$wp_customize->add_control( 'ct_ignite_post_meta_date_settings', array(
+		'label'          => __( 'Show date before posts?', 'ignite' ),
+		'section'        => 'ct-post-meta',
+		'settings'       => 'ct_ignite_post_meta_date_settings',
+		'type'           => 'radio',
+		'choices'        => array(
+			'show'   => __('Show', 'ignite'),
+			'hide'  => __('Hide', 'ignite')
+		)
+	) );
+	// setting - author
+	$wp_customize->add_setting( 'ct_ignite_post_meta_author_settings', array(
+		'default'           => 'show',
+		'type'              => 'theme_mod',
+		'capability'        => 'edit_theme_options',
+		'sanitize_callback' => 'ct_ignite_sanitize_show_hide_setting',
+	) );
+	// control - author
+	$wp_customize->add_control( 'ct_ignite_post_meta_author_settings', array(
+		'label'          => __( 'Show author before posts?', 'ignite' ),
+		'section'        => 'ct-post-meta',
+		'settings'       => 'ct_ignite_post_meta_author_settings',
+		'type'           => 'radio',
+		'choices'        => array(
+			'show'   => __('Show', 'ignite'),
+			'hide'  => __('Hide', 'ignite')
+		)
+	) );
     // setting - category
     $wp_customize->add_setting( 'ct_ignite_post_meta_categories_settings', array(
         'default'           => 'show',
@@ -416,6 +460,24 @@ function ct_ignite_add_customizer_content( $wp_customize ) {
             'hide'  => __('Hide', 'ignite')
         )
     ) );
+	// setting - further reading
+	$wp_customize->add_setting( 'ct_ignite_post_meta_further_reading_settings', array(
+		'default'           => 'show',
+		'type'              => 'theme_mod',
+		'capability'        => 'edit_theme_options',
+		'sanitize_callback' => 'ct_ignite_sanitize_show_hide_setting',
+	) );
+	// control - further reading
+	$wp_customize->add_control( 'ct_ignite_post_meta_further_reading_settings', array(
+		'label'          => __( 'Show prev/next post links after posts?', 'ignite' ),
+		'section'        => 'ct-post-meta',
+		'settings'       => 'ct_ignite_post_meta_further_reading_settings',
+		'type'           => 'radio',
+		'choices'        => array(
+			'show'   => __('Show', 'ignite'),
+			'hide'  => __('Hide', 'ignite')
+		)
+	) );
 
     /***** Comments Display *****/
 
@@ -556,6 +618,24 @@ function ct_ignite_add_customizer_content( $wp_customize ) {
             'hide'  => __('Hide', 'ignite')
         )
     ) );
+	// setting - parent menu icon
+	$wp_customize->add_setting( 'ct_ignite_parent_menu_icon_settings', array(
+		'default'           => 'hide',
+		'type'              => 'theme_mod',
+		'capability'        => 'edit_theme_options',
+		'sanitize_callback' => 'ct_ignite_sanitize_show_hide_setting',
+	) );
+	// control - parent menu icon
+	$wp_customize->add_control( 'ct_ignite_parent_menu_icon_settings', array(
+		'label'          => __( 'Add icon to parent menu items?', 'ignite' ),
+		'section'        => 'ct-additional-options',
+		'settings'       => 'ct_ignite_parent_menu_icon_settings',
+		'type'           => 'radio',
+		'choices'        => array(
+			'show'   => __('Show', 'ignite'),
+			'hide'  => __('Hide', 'ignite')
+		)
+	) );
     // setting - excerpt length
     $wp_customize->add_setting( 'ct_ignite_excerpt_length_settings', array(
         'default'           => 30,
@@ -705,7 +785,7 @@ function ct_ignite_sanitize_yes_no_setting($input){
 function ct_ignite_customizer_social_media_array() {
 
 	// store social site names in array
-	$social_sites = array('twitter', 'facebook', 'google-plus', 'flickr', 'pinterest', 'youtube', 'vimeo', 'tumblr', 'dribbble', 'rss', 'linkedin', 'instagram', 'reddit', 'soundcloud', 'spotify', 'vine','yahoo', 'behance', 'codepen', 'delicious', 'stumbleupon', 'deviantart', 'digg', 'git', 'hacker-news', 'steam', 'vk', 'academia', 'email');
+	$social_sites = array('twitter', 'facebook', 'google-plus', 'flickr', 'pinterest', 'youtube', 'vimeo', 'tumblr', 'dribbble', 'rss', 'linkedin', 'instagram', 'reddit', 'soundcloud', 'spotify', 'vine','yahoo', 'behance', 'codepen', 'delicious', 'stumbleupon', 'deviantart', 'digg', 'git', 'hacker-news', 'steam', 'vk', 'academia', 'weibo', 'tencent-weibo', 'email');
 	
 	return $social_sites;
 }
@@ -789,3 +869,60 @@ function ct_ignite_get_available_font_weights(){
 
     return $font_weights;
 }
+
+function ct_ignite_customizer_ad_array() {
+
+    // create array of ad text
+    $ads_array = array(
+        __('Have you seen Ignite Plus?', 'ignite') => 'https://www.competethemes.com/ignite-plus/?utm_source=customizer-ad&utm_medium=ignite&utm_content=have-you-seen-ignite-plus&utm_campaign=customizer-ads',
+        __('Upgrade Ignite', 'ignite') => 'https://www.competethemes.com/ignite-plus/?utm_source=customizer-ad&utm_medium=ignite&utm_content=upgrade-ignite&utm_campaign=customizer-ads',
+        __('View the Ignite Plus upgrade', 'ignite') => 'https://www.competethemes.com/ignite-plus/?utm_source=customizer-ad&utm_medium=ignite&utm_content=view-the-ignite-plus-upgrade&utm_campaign=customizer-ads',
+        __('Check out Ignite Plus', 'ignite') => 'https://www.competethemes.com/ignite-plus/?utm_source=customizer-ad&utm_medium=ignite&utm_content=check-out-ignite-plus&utm_campaign=customizer-ads',
+        __('Ignite Theme Upgrade', 'ignite') => 'https://www.competethemes.com/ignite-plus/?utm_source=customizer-ad&utm_medium=ignite&utm_content=ignite-theme-upgrade&utm_campaign=customizer-ads',
+        __('Premium Upgrade for Ignite', 'ignite') => 'https://www.competethemes.com/ignite-plus/?utm_source=customizer-ad&utm_medium=ignite&utm_content=premium-upgrade-for-ignite&utm_campaign=customizer-ads'
+    );
+    return $ads_array;
+}
+
+function ct_ignite_assign_customizer_ad() {
+
+    // if the ad text isn't set already
+    if( ! get_option('ct_ignite_ad_text') ) {
+
+        $ads_array = ct_ignite_customizer_ad_array();
+
+        // randomly pick one
+        $ad = rand(0,5);
+
+        // get randomly selected ad from array
+        $ad = array_slice($ads_array, $ad, 1);
+
+        // the phrase from the array
+        $ad_text = key($ad);
+
+        // sanitize
+        $ad_text = esc_html($ad_text);
+
+        // update database
+        update_option('ct_ignite_ad_text', $ad_text);
+    }
+}
+add_action('admin_init', 'ct_ignite_assign_customizer_ad');
+
+function ct_ignite_customize_preview_js() {
+
+    // get the ad text
+    $ad = get_option('ct_ignite_ad_text');
+
+    // get the array of ads
+    $ads_array = ct_ignite_customizer_ad_array();
+
+    // get the link based on the ad text
+    $link = $ads_array[$ad];
+
+    ?>
+	<script>
+		jQuery('#customize-info').append('<div class="upgrades-ad"><a href="<?php echo esc_url($link);?>" target="_blank"><?php echo esc_html($ad); ?> <span>&rarr;</span></a></div>');
+	</script>
+<?php }
+add_action('customize_controls_print_footer_scripts', 'ct_ignite_customize_preview_js');

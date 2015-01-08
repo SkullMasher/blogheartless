@@ -4,12 +4,12 @@ Esteem is a clean multipurpose responsive WordPress theme designed to fit busine
 
 /**********************************************************/
 
-== COPYRIGHT AND LICENSE == 
+== COPYRIGHT AND LICENSE ==
 
-Resources packed within the theme. 
+Resources packed within the theme.
 * Font Awesome by Dave Gandy http://fortawesome.github.io/Font-Awesome/
   SIL OFL 1.1 http://scripts.sil.org/OFL.
-* Image in the screenshot is under CC0 License from http://www.pexels.com/photo/1402/ link: 
+* Image in the screenshot is under CC0 License from http://www.pexels.com/photo/1402/ link:
 	http://static.pexels.com/wp-content/uploads/2014/06/evening-lake-people-1402.jpg
 * HTML5 Shiv @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed
 * The script jquery.cycle.all.js is dual licensed under GPL & MIT
@@ -23,7 +23,7 @@ Esteem is distributed under the terms of the GNU GPL
 
 /**********************************************************/
 
-== THEME USAGE == 
+== THEME USAGE ==
 
 = Theme Instruction =
 Get theme instruction at http://themegrill.com/theme-instruction/esteem
@@ -38,11 +38,44 @@ All available options can be used from Appearance->Theme Options
 
 == TRANSLATIONS ==
 If you've translated this theme into your language, feel free to send the translation over to themegrill@gmail.com
-and we will include it within the theme from next version update. 
+and we will include it within the theme from next version update.
 
 /**********************************************************/
 
 == CHANGE LOG ==
+= Version 1.1.8 =
+* Featured image hover icon bug fixed for category page.
+* Options Framework text domain changed.
+
+= Version 1.1.7 =
+* Posts Page title issue fixed.
+* Template part file added for no search result.
+* POT language file updated to include new added strings.
+
+= Version 1.1.6 =
+* Some missed translation fixed.
+* Changed the image size name to prevent conflict with reserved image size name.
+* Changes in options panel sidebar.
+
+= Version 1.1.5 =
+* Language pot file updated.
+
+= Version 1.1.4 =
+* Options framework updated to 1.9.0
+
+= Version 1.1.3 =
+* Removed blank spaces at the end of some files that caused site to show as a blank page in some cases.
+* Shortcodes previously used for footer copyright text now completely removed.
+* Footer credit link previously Author URI now changed to Theme URI.
+* Language pot file updated to include new strings.
+
+= Version 1.1.2 =
+* CSS added to support Recent Posts Widget Extended Plugin.
+* html5shiv updated to version 3.7.2
+
+= Version 1.1.1 =
+* the_title changed with the_title_attribute to prevent plugin conflict.
+* Boxed layout padding issue
 
 = Version 1.1 =
 * Testimonial bug fixed.

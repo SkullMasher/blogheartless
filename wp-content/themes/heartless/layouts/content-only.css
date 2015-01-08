@@ -11,7 +11,17 @@ Layout: Content-Sidebar
 .site-main {
 	/*background-color: #fff;*/
 	margin: 0 auto;
-	width: 900px;
+	width: 70%;
+}
+@media screen and (max-width: 1024px) {
+	.site-main {
+		width: 85%;
+	}
+}
+@media screen and (max-width: 600px) {
+	.site-main {
+		width: 100%;
+	}
 }
 .site-content {
 	background-color: chartreuse;
