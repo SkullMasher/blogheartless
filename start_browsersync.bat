@@ -1,1 +1,1 @@
-browser-sync start --proxy "localhost/evalphp" --files "css/*.css, *.php, classes/*.php, js/*.js"
+browser-sync start --proxy "localhost/blogheartless" --files "/wp-content/themes/heartless/style.css, /wp-content/themes/heartless/*.php, /wp-content/themes/heartless/inc/*.php, /wp-content/themes/heartless/js/*.js"

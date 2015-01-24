@@ -9,11 +9,11 @@
         <?php if ( 'post' == get_post_type() ) : ?>
         <div class="entry-meta">
             <div class="author-meta">
-                <?php echo get_avatar( get_the_author_meta( 'ID' ), 32 ); ?>
+                <?php echo '<a href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . get_avatar( get_the_author_meta( 'ID' ), 32 ) . '</a>' ?>
 
                 <?php
                     // heartless_posted_on();
-                    echo '<a class="author-url url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>';
+                    echo '<a class="author-url url fn n" href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . esc_html( get_the_author() ) . '</a>';
 
                 ?>
             </div>
