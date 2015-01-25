@@ -9,7 +9,6 @@
         <?php if ( 'post' == get_post_type() ) : ?>
         <div class="entry-meta">
             <div class="author-meta">
-                <!-- github commit test -->
                 <?php echo '<a href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . get_avatar( get_the_author_meta( 'ID' ), 32 ) . '</a>' ?>
 
                 <?php
