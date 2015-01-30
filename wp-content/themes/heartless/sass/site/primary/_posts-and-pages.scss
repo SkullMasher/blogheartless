@@ -54,13 +54,13 @@
       }
     }
 
-    .post-date{
+    .post-date {
       a {
         color: #fff;
         display: block;
         margin-bottom: 1em;
-        text-decoration: none;
         text-align: center;
+        text-decoration: none;
         
         &:hover {
           text-decoration: underline;
@@ -97,6 +97,23 @@
   float: none;
 }
 
+
+.single-post {
+  .entry-header {
+    width: 100%;
+    margin: 0;
+  }
+  .entry-header .entry-meta {
+    border: 0;
+  }
+
+  .entry-title {
+    @include font-size(3.2);
+    background-color: transparent;
+    display: inline;
+    text-align: center;
+  }
+}
 
 
 .entry-title {
