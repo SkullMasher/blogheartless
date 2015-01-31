@@ -774,6 +774,11 @@ X.X Footer
   margin-top: 20px;
   text-align: center;
 }
+/* line 12, sass/site/_footer.scss */
+.site-footer .git-icon:before {
+  content: '\f09b';
+  font-family: 'FontAwesome';
+}
 
 /*--------------------------------------------------------------
 9.0 Widgets
@@ -801,7 +806,7 @@ X.X Footer
 10.1 Posts and pages
 --------------------------------------------------------------*/
 /* line 2, sass/site/primary/_posts-and-pages.scss */
-.hentry {
+.post {
   background-clip: padding-box;
   /* stops bg color from leaking outside the border: */
   -webkit-border-radius: 5px;
@@ -819,8 +824,8 @@ X.X Footer
 
 /* line 15, sass/site/primary/_posts-and-pages.scss */
 .entry-header {
-  width: 25%;
   margin-right: 3%;
+  width: 25%;
 }
 /* line 19, sass/site/primary/_posts-and-pages.scss */
 .entry-header .entry-meta {
@@ -925,12 +930,12 @@ X.X Footer
 .single-post .entry-header,
 .single-post .entry-content {
   float: none;
+  width: 100%;
 }
 
-/* line 131, sass/site/primary/_posts-and-pages.scss */
+/* line 132, sass/site/primary/_posts-and-pages.scss */
 .single-post .entry-header {
   margin: 0;
-  width: 100%;
 }
 /* line 135, sass/site/primary/_posts-and-pages.scss */
 .single-post .entry-header .entry-meta {
@@ -944,15 +949,27 @@ X.X Footer
   display: inline;
   text-align: center;
 }
-
 /* line 149, sass/site/primary/_posts-and-pages.scss */
+.single-post .entry-footer .cat-links:before {
+  content: '\f02e';
+  font-family: 'FontAwesome';
+  margin-right: 5px;
+}
+/* line 156, sass/site/primary/_posts-and-pages.scss */
+.single-post .entry-footer .tags-links:before {
+  content: '\f02b';
+  font-family: 'FontAwesome';
+  margin-right: 5px;
+}
+
+/* line 166, sass/site/primary/_posts-and-pages.scss */
 .entry-title {
   background-color: #527d9b;
   display: inline-block;
   padding: 0;
   text-transform: uppercase;
 }
-/* line 155, sass/site/primary/_posts-and-pages.scss */
+/* line 172, sass/site/primary/_posts-and-pages.scss */
 .entry-title a {
   font-size: 24px;
   font-size: 2.4rem;
@@ -963,53 +980,49 @@ X.X Footer
   padding: 0 .5em;
   text-decoration: none;
 }
-/* line 164, sass/site/primary/_posts-and-pages.scss */
+/* line 181, sass/site/primary/_posts-and-pages.scss */
 .entry-title a:hover {
   text-decoration: underline;
 }
 
-/* line 171, sass/site/primary/_posts-and-pages.scss */
+/* line 188, sass/site/primary/_posts-and-pages.scss */
 .sticky {
   background-color: #527d9b;
   color: #fff;
   display: block;
 }
-/* line 176, sass/site/primary/_posts-and-pages.scss */
+/* line 193, sass/site/primary/_posts-and-pages.scss */
 .sticky .entry-title {
   background-color: #3e3e3e;
 }
-/* line 181, sass/site/primary/_posts-and-pages.scss */
+/* line 198, sass/site/primary/_posts-and-pages.scss */
 .sticky .cat-links:before {
   content: '\f02e';
   font-family: 'FontAwesome';
-  font-style: normal;
-  font-weight: normal;
 }
-/* line 188, sass/site/primary/_posts-and-pages.scss */
+/* line 203, sass/site/primary/_posts-and-pages.scss */
 .sticky .cat-links a {
   color: #191970;
 }
-/* line 191, sass/site/primary/_posts-and-pages.scss */
+/* line 206, sass/site/primary/_posts-and-pages.scss */
 .sticky .cat-links a:hover {
   color: #000070;
 }
-/* line 198, sass/site/primary/_posts-and-pages.scss */
+/* line 213, sass/site/primary/_posts-and-pages.scss */
 .sticky .tags-links:before {
   content: '\f02b';
   font-family: 'FontAwesome';
-  font-style: normal;
-  font-weight: normal;
 }
-/* line 205, sass/site/primary/_posts-and-pages.scss */
+/* line 218, sass/site/primary/_posts-and-pages.scss */
 .sticky .tags-links a {
   color: #191970;
 }
-/* line 208, sass/site/primary/_posts-and-pages.scss */
+/* line 221, sass/site/primary/_posts-and-pages.scss */
 .sticky .tags-links a:hover {
   color: #000070;
 }
 
-/* line 216, sass/site/primary/_posts-and-pages.scss */
+/* line 229, sass/site/primary/_posts-and-pages.scss */
 .entry-content h1,
 .entry-content h2,
 .entry-content h3,
@@ -1019,37 +1032,37 @@ X.X Footer
   margin-bottom: .4em;
 }
 
-/* line 225, sass/site/primary/_posts-and-pages.scss */
+/* line 238, sass/site/primary/_posts-and-pages.scss */
 .entry-content h1 {
   font-size: 3.2rem;
 }
 
-/* line 229, sass/site/primary/_posts-and-pages.scss */
+/* line 242, sass/site/primary/_posts-and-pages.scss */
 .entry-content h2 {
   font-size: 3rem;
 }
 
-/* line 233, sass/site/primary/_posts-and-pages.scss */
+/* line 246, sass/site/primary/_posts-and-pages.scss */
 .entry-content h3 {
   font-size: 2.8rem;
 }
 
-/* line 237, sass/site/primary/_posts-and-pages.scss */
+/* line 250, sass/site/primary/_posts-and-pages.scss */
 .entry-content h4 {
   font-size: 2.6rem;
 }
 
-/* line 241, sass/site/primary/_posts-and-pages.scss */
+/* line 254, sass/site/primary/_posts-and-pages.scss */
 .entry-content h5 {
   font-size: 2.4rem;
 }
 
-/* line 245, sass/site/primary/_posts-and-pages.scss */
+/* line 258, sass/site/primary/_posts-and-pages.scss */
 .entry-content h6 {
   font-size: 2.2rem;
 }
 
-/* line 249, sass/site/primary/_posts-and-pages.scss */
+/* line 262, sass/site/primary/_posts-and-pages.scss */
 .entry-content p,
 .entry-content ul,
 .entry-content ol {
@@ -1057,32 +1070,32 @@ X.X Footer
   line-height: 1.6em;
 }
 
-/* line 256, sass/site/primary/_posts-and-pages.scss */
+/* line 269, sass/site/primary/_posts-and-pages.scss */
 .entry-content blockquote p {
   font-size: 2.8rem;
   line-height: 1.5em;
 }
 
-/* line 262, sass/site/primary/_posts-and-pages.scss */
+/* line 275, sass/site/primary/_posts-and-pages.scss */
 .byline,
 .updated:not(.published) {
   display: none;
 }
 
-/* line 267, sass/site/primary/_posts-and-pages.scss */
+/* line 280, sass/site/primary/_posts-and-pages.scss */
 .single .byline,
 .group-blog .byline {
   display: inline;
 }
 
-/* line 272, sass/site/primary/_posts-and-pages.scss */
+/* line 285, sass/site/primary/_posts-and-pages.scss */
 .page-content,
 .entry-content,
 .entry-summary {
   margin: 1.5em 0 0;
 }
 
-/* line 278, sass/site/primary/_posts-and-pages.scss */
+/* line 291, sass/site/primary/_posts-and-pages.scss */
 .page-links {
   clear: both;
   margin: 0 0 1.5em;
@@ -1124,7 +1137,15 @@ X.X Footer
   font-size: 3rem;
 }
 
-/* line 19, sass/site/primary/_comments.scss */
+/* line 21, sass/site/primary/_comments.scss */
+.comment-form .form-submit {
+  margin-top: 10px;
+}
+/* line 26, sass/site/primary/_comments.scss */
+.comment-form .comment-form-comment textarea {
+  resize: vertical;
+}
+/* line 31, sass/site/primary/_comments.scss */
 .comment-form .form-allowed-tags {
   background-clip: padding-box;
   /* stops bg color from leaking outside the border: */
@@ -1133,10 +1154,6 @@ X.X Footer
   background-color: #c2c2c2;
   margin: 0 auto;
   padding: .5em;
-}
-/* line 25, sass/site/primary/_comments.scss */
-.comment-form .form-allowed-tags textarea {
-  resize: vertical;
 }
 
 /*--------------------------------------------------------------

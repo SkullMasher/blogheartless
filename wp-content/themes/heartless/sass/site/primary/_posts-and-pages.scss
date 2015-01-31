@@ -1,5 +1,5 @@
 // Style for blog post container
-.hentry {
+.post {
   @include border-radius(5px);
   background-color: #fff;
   margin: 0 0 1.5em;
@@ -13,8 +13,8 @@
 }
 
 .entry-header {
-  width: 25%;
   margin-right: 3%;
+  width: 25%;
   
   .entry-meta {
     border-right: solid 5px #ba3232;
@@ -124,13 +124,13 @@
 .single-post .entry-header,
 .single-post .entry-content {
   float: none;
+  width: 100%;
 }
 
 
 .single-post {
   .entry-header {
     margin: 0;
-    width: 100%;
 
     .entry-meta {
       border: 0;
@@ -142,6 +142,23 @@
     background-color: transparent;
     display: inline;
     text-align: center;
+  }
+
+  .entry-footer {
+    .cat-links {
+      &:before {
+        content: '\f02e';
+        font-family: 'FontAwesome';
+        margin-right: 5px;
+      }
+    }
+    .tags-links {
+      &:before {
+        content: '\f02b';
+        font-family: 'FontAwesome';
+        margin-right: 5px;
+      }
+    }
   }
 }
 
@@ -181,8 +198,6 @@
     &:before {
       content: '\f02e';
       font-family: 'FontAwesome';
-      font-style: normal;
-      font-weight: normal;
     }
 
     a {
@@ -198,8 +213,6 @@
     &:before {
       content: '\f02b';
       font-family: 'FontAwesome';
-      font-style: normal;
-      font-weight: normal;
     }
 
     a {

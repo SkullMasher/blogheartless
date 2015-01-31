@@ -7,6 +7,13 @@
     margin-top: 20px;
     text-align: center;
   }
+
+  .git-icon {
+    &:before {
+      content: '\f09b';
+      font-family: 'FontAwesome';
+    }
+  }
 }
 
 

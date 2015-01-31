@@ -16,13 +16,22 @@
   }
 }
 
-.comment-form .form-allowed-tags {
-  @include border-radius(5px);
-  background-color: $color-lightgrey;
-  margin: 0 auto;
-  padding: .5em;
+.comment-form {
 
-  textarea {
-    resize: vertical;
+  .form-submit {
+    margin-top: 10px;
+  }
+
+  .comment-form-comment {
+    textarea {
+      resize: vertical;
+    }
+  }
+
+  .form-allowed-tags {
+    @include border-radius(5px);
+    background-color: $color-lightgrey;
+    margin: 0 auto;
+    padding: .5em;
   }
 }

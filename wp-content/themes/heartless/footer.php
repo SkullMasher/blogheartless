@@ -12,8 +12,9 @@
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
-			<!-- <span class="sep"> | </span> -->
 			<?php printf( __( 'Theme %1$s made with %2$s', 'heartless' ), 'Heartless', '<a href="http://underscores.me/" rel="designer">Underscores.me</a>' ); ?>
+			<br>
+			Checkout the code on <span class="git-icon"></span> <a href="https://github.com/SkullMasher/blogheartless">Github</a>
 			<br>
 			<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'heartless' ) ); ?>"><?php printf( __( '%s FTW !', 'heartless' ), 'WordPress' ); ?></a>
 		</div><!-- .site-info -->
