@@ -41,9 +41,9 @@
                     $categories_list = get_the_category_list( __( ', ', 'heartless' ) );
                     if ( $categories_list && heartless_categorized_blog() ) :
                 ?>
-                <span class="cat-links">
+                <div class="cat-links">
                     <?php printf( __( '%1$s', 'heartless' ), $categories_list ); ?>
-                </span>
+                </div>
                 <?php endif; // End if categories ?>
 
                 <?php

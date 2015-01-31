@@ -76,22 +76,32 @@
 
   .cat-links {
     &:before {
+      @include font-size(1.8);
       content: '\f02e';
       font-family: 'FontAwesome';
       font-style: normal;
       font-weight: normal;
-    }
-  }
-  
-  .tags-links {
-    &:before {
-      content: '\f02b';
-      font-family: 'FontAwesome';
-      font-style: normal;
-      font-weight: normal;
+      margin-right: 5px;
     }
   }
 
+  .tags-links {
+    &:before {
+      @include font-size(1.8);
+      content: '\f02b';
+      font-family: 'FontAwesome';
+      margin-right: 5px;
+    }
+  }
+  
+  .comments-link {
+    &:before {
+      @include font-size(1.8);
+      content: '\f0e6';
+      font-family: 'FontAwesome';
+      margin-right: 5px;
+    }
+  }
 }
 
 @media screen and (max-width: 600px) {
