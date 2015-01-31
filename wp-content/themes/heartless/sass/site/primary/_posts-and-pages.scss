@@ -73,6 +73,25 @@
       }
     }
   }
+
+  .cat-links {
+    &:before {
+      content: '\f02e';
+      font-family: 'FontAwesome';
+      font-style: normal;
+      font-weight: normal;
+    }
+  }
+  
+  .tags-links {
+    &:before {
+      content: '\f02b';
+      font-family: 'FontAwesome';
+      font-style: normal;
+      font-weight: normal;
+    }
+  }
+
 }
 
 @media screen and (max-width: 600px) {
@@ -100,11 +119,12 @@
 
 .single-post {
   .entry-header {
-    width: 100%;
     margin: 0;
-  }
-  .entry-header .entry-meta {
-    border: 0;
+    width: 100%;
+
+    .entry-meta {
+      border: 0;
+    }
   }
 
   .entry-title {
@@ -147,6 +167,39 @@
     background-color: $color-darkgrey;
   }
 
+  .cat-links {
+    &:before {
+      content: '\f02e';
+      font-family: 'FontAwesome';
+      font-style: normal;
+      font-weight: normal;
+    }
+
+    a {
+      color: #191970;
+  
+      &:hover {
+        color: #000070;
+      }
+    }
+  }
+
+  .tags-links {
+    &:before {
+      content: '\f02b';
+      font-family: 'FontAwesome';
+      font-style: normal;
+      font-weight: normal;
+    }
+
+    a {
+      color: #191970;
+  
+      &:hover {
+        color: #000070;
+      }
+    }
+  }
 }
 
 // Heading & other html element styling in blog post

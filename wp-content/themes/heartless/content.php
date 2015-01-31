@@ -51,14 +51,14 @@
                     $tags_list = get_the_tag_list( '', __( ', ', 'heartless' ) );
                     if ( $tags_list ) :
                 ?>
-                <span class="tags-links">
-                    <?php printf( __( 'Tagged %1$s', 'heartless' ), $tags_list ); ?>
-                </span>
+                <div class="tags-links">
+                    <?php printf( __( ' %1$s', 'heartless' ), $tags_list ); ?>
+                </div>
                 <?php endif; // End if $tags_list ?>
             <?php endif; // End if 'post' == get_post_type() ?>
 
             <?php if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) : ?>
-            <span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'heartless' ), __( '1 Comment', 'heartless' ), __( '% Comments', 'heartless' ) ); ?></span>
+            <div class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'heartless' ), __( '1 Comment', 'heartless' ), __( '% Comments', 'heartless' ) ); ?></div>
             <?php endif; ?>
 
             <?php edit_post_link( __( 'Edit', 'heartless' ), '<span class="edit-link">', '</span>' ); ?>
